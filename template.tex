@@ -1,0 +1,145 @@
+﻿%% Thesis Template of Chinese Academy of Sciences
+%%   for using CASthesis package with LaTeX2e
+%%
+%% Created by Ling-Yun Wu <aloft@ctex.org>
+%%
+%% $Id: template.tex,v 1.10 2007/01/09 05:10:46 aloft Exp $
+
+
+% \documentclass[dvipdfm]{CASthesis}
+\expandafter\def\csname CTEX@spaceChar\endcsname{\hspace{1em}}
+% \documentclass[pdftex, oneside]{BITthesis}
+\documentclass[oneside]{BITthesis}
+% \documentclass[pdftex]{BITthesis}
+% 可选参数：
+% notypeinfo 取消扉页的LaTeX版本信息
+%
+% 下面三个选一个：
+% dvipdfm 使用 dvipdfm(x) 生成最终的 PDF 文档 (缺省设置）
+% dvips 使用 dvips 生成最终的 PS 文档
+% pdftex 使用 pdfLaTeX 生成最终的 PDF 文档
+
+
+% 设置图形文件的搜索路径
+\graphicspath{{chapter/}{figures/}}
+
+% 取消链接的颜色（黑白打印时）
+%\hypersetup{colorlinks=false}
+
+% 小节标题靠左对齐
+\CTEXsetup[format+={\flushleft}]{section}
+\CTEXsetup[format+={\flushleft},nameformat={\bfseries\heiti\zihao{-4}},
+            titleformat={\bfseries\heiti\zihao{-4}},indent={0pt}]{subsection}
+\CTEXsetup[format+={\flushleft},nameformat={\zihao{-4}},
+            titleformat={\zihao{-4}},indent={0pt}]{subsubsection}
+
+\newcommand{\supercite}[1]{\textsuperscript{\cite{#1}}}
+% 取消空格
+\xeCJKsetup{CJKecglue=\hspace{0em}}
+\setmainfont{Times New Roman}
+\begin{document}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 封面部分
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  % 中文封面内容
+  \classification{TN391.41}
+  \confidential{}
+  \UDC{621.3}
+  \serialnumber{}
+  \title{北京理工大学博士学位论文~\LaTeX{}~模板}
+  \author{LSS}
+  \advisor{}
+  \advisorinstitute{}
+  \degree{工学博士}
+  \major{控制科学与工程}
+  \submitdate{2016~年~08~月}
+  \defenddate{2016~年~08~月}
+  \institute{自动化学院}
+  \school{北京理工大学}
+  \chairman{}
+
+  % 英文封面内容
+  \englishtitle{\LaTeX{} Thesis Template \\ of \\ Beijing Institute of Technology}
+  \englishauthor{LSS}
+  \englishadvisor{Prof. }
+  \englishchairman{}
+  \englishinstitute{School of Automation}
+  \englishdegree{Ph.D.}
+  \englishmajor{Control Science and Engineering}
+  \englishschool{Beijing Institute of Technology}
+
+
+  % 封面
+  \maketitle
+
+  % 英文封面
+  \makeenglishtitle
+
+  %打印竖排论文题目
+  \makeVerticalTitle
+
+  % 论文原创性声明和使用授权
+  \makeDeclareOriginal
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 前言部分
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frontmatter
+  \pagenumbering{Roman}
+
+  % 摘要
+  \include{chapter/abstract}
+
+  % 目录
+  \tableofcontents
+  % 表格目录
+  % \listoftables
+  % 插图目录
+  % \listoffigures
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 正文部分
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mainmatter
+
+  \include{chapter/chap-intro}
+  \include{chapter/chap-math}
+  \include{chapter/chap-tabfig}
+  \include{chapter/chap-faq}
+
+  % 附录
+  \appendix
+
+  \include{chapter/chap-req}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 附件部分
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\backmatter
+
+  % 参考文献
+  % 使用 BibTeX
+  \makeatletter % 调节参考文献之间距离
+  \renewcommand{\@openbib@code}{\addtolength{\itemsep}{-0.5em}}
+  \makeatother
+  \bibliography{bib/tex}
+  \nocite{*}
+  % 不使用 BibTeX
+  % \include{chapter/bib}
+
+  % 发表文章目录
+  \include{chapter/pub}
+
+  % 个人简历
+  \include{chapter/resume}
+
+  % 致谢
+  \include{chapter/thanks}
+
+
+\end{document}
